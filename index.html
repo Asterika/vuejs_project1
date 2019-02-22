@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product App</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+
+    <div class="nav-bar"></div>
+
+    <div id="app">
+
+      <div class="product">
+
+        <div class="product-image">
+          <!-- binds data and attribute it is bound to -->
+          <!-- dynamically binds an attribute to its expression -->
+          <!-- the expression is image -->
+          <!-- <img v-bind:src="image"> -->
+          <!-- shorthand:
+          :alt="description"
+          :href="url"
+          :title="toolTip"
+          :class="isActive"
+          :style="isStyle
+          :disabled="isDisabled"-->
+          <img :src="image" />
+        </div>
+
+      <div class="product-info">
+      <!-- expression: pulls product from Vue instances -->
+        <h1>{{ product }}</h1>
+        <a :href="link" target="_blank">More Green Socks</a>
+      </div>
+
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
