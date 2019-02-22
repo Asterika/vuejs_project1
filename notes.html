@@ -1,0 +1,72 @@
+EVENT LISTENERS:
+
+can listen for multiple events with this syntax:
+
+button @click="addToCart"
+div @mouseover="updateProduct"
+form @submit="addToCart"
+input@keyup.enter="send"
+
+.enter - modifier
+when enter key lifts up after it is pressed, send triggers
+
+
+CSS BINDING:
+
+in .html
+<h1 :style="{ color: color }">...</h1>
+* the first "color" references the new CSS style we want to add
+* the second 'color' references the property from the data object
+
+in .js
+data: {
+  color: 'red'
+}
+
+in.html
+<p :style="{ fontSize: fontSize }">...</p>
+* first fontSize is the one we're adding
+* second is the one in the data object we're binding it to
+
+in .js
+data: {
+  color: 'red',
+  fontSize: '13px'
+}
+*** we've been using camelCase b/c we're in an object, but we can also use kebab casing if it's quotes
+i.e.
+<p :style="{ 'font-size': fontSize }"
+
+OFTEN IT'S MORE CLEAR TO BIND TO A STYLE OBJECT VS INDIVIDUAL STYLE PROPERTIES:
+
+<span :style='styleObject'>...</span>
+
+data: {
+  styleObject: {
+    color: 'red',
+    fontSize: '13px'
+  }
+}
+
+IF THERE ARE MULTIPLE STYLE OBJECTS, BIND THEM IN AN ARRAY:
+<p :style="[styleObject, styleObject2]">...</p>
+
+data: {
+  styleObject: {
+    color: 'red',
+    fontSize: '13px'
+  }
+  styleObject2: {
+    margin: '5px',
+    padding: '20px'
+  }
+}
+
+CLASS BINDING:
+<div class="color-box"
+  :class="{ active: activeClass, 'text-danger': errorClass }">...</div>
+
+data: {
+  activeClass: true,
+  errorClass: false
+}

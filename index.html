@@ -33,6 +33,53 @@
       <!-- expression: pulls product from Vue instances -->
         <h1>{{ product }}</h1>
         <a :href="link" target="_blank">More Green Socks</a>
+        <!-- this method will actually remove unused items from the DOM -->
+        <!-- <p v-if="inventory > 10">In Stock</p>
+        <p v-else-if="inventory <= 10 && inventory > 0">Almost gone!</p> -->
+        <p v-if="inStock">In Stock</p>
+        <p v-else :class="{ outOfStock: !inStock }">Sold Out</p>
+        <!-- to toggle the visibility of elements w/o removing them from the DOM: -->
+        <!-- in this case, it will simply hide the "in stock" from view if value is false -->
+        <!-- here, CSS property is set to "display: none" -->
+        <!-- <p v-show="inStock">In Stock</p> -->
+        <h2 v-show="onSale">On SALE!!!</h2>
+
+        <ul>
+          <!-- loops through the collection, displaying each value in a string -->
+          <li v-for="detail in details">{{ detail }}</li>
+        </ul>
+
+        <p>Available Colors:</p>
+        <!-- when rendering lists, add key attribute so Vue can keep track of each node's identity -->
+        <!-- create hover effect that changes variantImage on mouseover -->
+        <!-- @ = shorthand for v-on -->
+        <div v-for="variant in variants"
+          :key="variant.variantId"
+          class="color-box"
+          :style="{ backgroundColor: variant.variantColor}"
+          @mouseover="updateProduct(variant.variantImage)">
+        </div>
+
+        <!-- add an event listener to increment cart items -->
+        <!-- <button v-on:click="cart += 1">Add to Cart</button> -->
+        <!-- or, we can simply bind this event listener to a method -->
+        <!-- add disabled so that users can't click the add to cart button if there are no socks in stock -->
+        <button v-on:click="addToCart"
+          :disabled="!inStock"
+          :class="{ disabledButton: !inStock }">Add to Cart</button>
+
+        <button v-on:click="removeFromCart">Remove from Cart</button>
+
+
+        <div class="cart">
+          <p>Cart({{cart}})</p>
+        </div>
+
+        <!-- <p>Sizes:</p>
+        <div v-for="size in sizes">
+          <p>{{ size }}</p>
+        </div> -->
+
       </div>
 
       </div>
